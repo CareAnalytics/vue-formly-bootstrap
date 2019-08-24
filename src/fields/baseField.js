@@ -52,9 +52,11 @@ export default
       }
       let errors = this.form.$errors[ this.field.key ];
       let hasErrors = false;
-      Object.keys( errors ).forEach( err => {
-        if ( errors[err] !== false ) hasErrors = true; 
-      });
+      if(typeof errors != 'undefined'){
+        Object.keys( errors ).forEach( err => {
+          if ( errors[err] !== false ) hasErrors = true; 
+        });
+    }
       this.$set(this.form[ this.field.key ], '$hasError', hasErrors);
       return hasErrors;
     }
